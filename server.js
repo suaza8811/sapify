@@ -6,10 +6,12 @@ const errorHandler = require('./middlewares/errorHandler');
 const mockSapRoutes = require('./routes/mockSap');
 //const sendToSAP = require('./jobs/sendOrdersToSAP');
 const testSendSAP = require('./jobs/mockSendToSap');
+const cors = require('cors');
+
 
 
 const app = express();
-
+app.use(cors());
 // Conectar a la base de datos
 connectDB();
 
@@ -25,6 +27,10 @@ app.use(errorHandler);
 //sap test
 app.use('/mock', mockSapRoutes);
 //app.use(testSendSAP)
+
+//dashboard enpoint
+app.use('/api/orders', orderRoutes);
+
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
