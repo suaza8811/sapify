@@ -26,7 +26,8 @@ const OrderSchema = new mongoose.Schema({
     }
   ],
   status: String,
-  rawData: Object
+  rawData: Object,
+  sentToSAP: { type: Boolean, default: false }
 });
 
 // Forzamos el nombre exacto de la colección: 'dataShopify'

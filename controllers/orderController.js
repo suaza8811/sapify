@@ -23,7 +23,8 @@ exports.createOrder = async (req, res, next) => {
         price: parseFloat(item.price)
       })),
       status: data.financial_status,
-      rawData: data // Guarda el JSON completo, opcional
+      rawData: data, // Guarda el JSON completo, opcional
+      sendToSap: false
     });
 
     await order.save();

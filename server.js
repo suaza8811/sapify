@@ -4,7 +4,9 @@ const connectDB = require('./config/mongodb');
 const orderRoutes = require('./routes/orderRoutes');
 const errorHandler = require('./middlewares/errorHandler');
 const mockSapRoutes = require('./routes/mockSap');
-require('./jobs/sendOrdersToSAP');
+//const sendToSAP = require('./jobs/sendOrdersToSAP');
+const testSendSAP = require('./jobs/mockSendToSap');
+
 
 const app = express();
 
@@ -22,6 +24,7 @@ app.use(errorHandler);
 
 //sap test
 app.use('/mock', mockSapRoutes);
+//app.use(testSendSAP)
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
