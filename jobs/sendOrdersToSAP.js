@@ -2,12 +2,13 @@
 const cron = require('node-cron');
 const axios = require('axios');
 const Order = require('../models/Order');
+require('dotenv').config();
 
 const SAP_CONFIG = {
-  baseUrl: 'https://servapps.cortineros.local:50001/b1s/v1',
-  user: 'USUARIO_SAP',
-  password: 'CONTRASENA_SAP',
-  companyDB: 'NOMBRE_EMPRESA_SAP'
+  baseUrl: process.env.SAP_API_URL,
+  user: process.env.SAP_USER,
+  password:  process.env.SAP_PASSWORD,
+  companyDB:  process.env.SAP_COMPANY_DB
 };
 
 async function loginToSAP() {
